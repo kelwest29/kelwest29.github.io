@@ -1,0 +1,64 @@
+
+#myName {
+    color: white;
+  background-color: grey;
+  
+  
+} 
+
+ #myName, #content{
+    margin:auto;
+    width:60%;
+    text-align: center;
+}
+
+#goalImage, #workHistory {
+    display:flex;
+    flex-direction: column;
+
+}
+
+#goalImage img{
+    height: 250px;
+    width:300px;
+}
+
+@font-face {
+    font-family:boldFont;
+    src: url(sansation_bold.woff);
+    font-weight: bold;
+ }
+#workHistory h2 {
+    font-family: myFirstFont;
+    float:center;
+    
+    padding: 15px;
+
+
+    background-color: lightgrey;
+    border: 15px solid teal;
+    padding: 50px;
+    margin: 20px;
+
+}
+#workHistory p{
+    line-height: 1.8;
+}
+
+#workHistory ul li{
+   
+    background: turquoise;
+        padding: 5px;
+        margin-left: 5px;
+    text-align: justify    
+    
+    
+        
+      
+}
+#workHistory {
+    background-color:rgba(192,192,192,0.3);
+    outline-style: double;
+    white-space:normal;
+    
+}
