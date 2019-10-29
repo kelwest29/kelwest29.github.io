@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Test AJAX page</title>
+    <link rel="stylesheet" type="text/css" href="./lab_styles.css" />
+  </head>
 
-<head>
-  <title>Test AJAX page</title>
-  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="wrapper">
-      <div class="header">UMD Bus Routes</div>
-      <button class="button" onclick="loadData()">Load Some JSON</button>
-      <div class="content">
-        <ol class="unOrderList">
-          <li> Click Button</li>
-        </ol>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">UMD Bus Routes</div>
+        <button class="button" onclick="loadData()">Load Some JSON</button>
+        <div class="content">
+          <ul class="unOrderList">
+            <li>Click Button</li>
+          </ul>
+        </div>
+        <div class="footer"></div>
       </div>
-      <div class="footer"></div>
     </div>
-  </div>
-  <script>
-    function loadData() {
-      fetch('https://api.umd.io/v0/bus/routes')
-        .then(res => res.json())
-        .then(res => console.log(res)
-        return res;
-        )
-        .then(res => res.map(c => c.route_id + " " + c.title))
-        .then(busArr => {
-          const element = document.querySelector(".unOrderList")
+    <script>
+      function loadData() {
+        fetch('https://api.umd.io/v0/bus/routes')
+          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+            return res;
+
+           })
+
+          .then(busArr => {
+            const element = document.querySelector(".unOrderList")
             element.innerHTML = " ";
-        })
-        .then( route => {
-          for (let i = 0; i < route.length(); i += 1) {
-              nameArray = "<li>" + route[getRandomIntInclusive(0, 242)] + "</li>";
-              element.innerHTML += nameArray;
+
+            for (let i = 0; i < busArr.length; i += 1) {
+                nameArr = "<li>" + busArr[i].title + "</li>";
+                element.innerHTML += nameArr;
             }
+              return busArr;
+          })
+          .then( headerArr => {
+            const i = document.querySelector(".header")
+           i.innerHTML = "UMD Bus Route ";
+            busHeader= headerArr[2].title;
+            i.innerHTML += busHeader;
 
-        }
-          
+              return headerArr;
 
-        )
-        .then(res => {
-          
+          })
+          .then(resEnd => {
+            console.log(resEnd)
+            return resEnd;
 
-          )
-          // you can now work in this area
-
-          return res;
-        })
-        .then(data => document.querySelector(".content").innerText = data);
-    }
-  </script>
-</body>
-
+          });
+         
+      }
+    </script>
+  </body>
 </html>
